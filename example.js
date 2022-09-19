@@ -1,3 +1,8 @@
-import {todo} from './index.js'
+import {positions} from './index.js'
 
-// todo
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+for await (const pos of positions()) {
+	console.log(pos)
+	await sleep(1000)
+}

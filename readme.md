@@ -18,8 +18,27 @@ npm install live-gomedia-position
 
 ## Usage
 
+`positions()` returns an [async iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols) of geolocation data points.
+
 ```js
-// todo
+const {positions} = require('live-gomedia-position')
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+for await (const pos of positions()) {
+	console.log(pos)
+	await sleep(5000)
+}
+// {
+// 	latitude: 52.715446,
+// 	longitude: 12.995633,
+// 	speed: 27.43, // km/h
+// }
+// {
+// 	latitude: 52.715805,
+// 	longitude: 12.992863,
+// 	speed: 27.323,
+// }
 ```
 
 
